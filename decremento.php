@@ -1,6 +1,6 @@
 <?php
 $numero = 5; 
-$numero++;
+$numero--;
 
 echo "Esse número é: $numero"; 
 
