@@ -5,17 +5,15 @@ $senha = "senac";
 $banco = "db_php";
 $porta = "3307";
 
-$conexao = new mysli(
+$conexao = new mysqli(
     $host,
     $usuario,
     $senha,
-    $banco, 
+    $banco,
     $porta
-); 
+);
 
 if ($conexao->connect_error) {
-    die("Erro ao conectar com o banco de dados: " . $conexao->connect_error); 
+    die("Erro ao conectar com o banco de dados: " . $conexao->connect_error);
 }
-
-echo "Conexão com o banco de dados estabelecida com sucesso!"; 
 ?>

@@ -5,34 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>resultado</title>
-    <link rel="stylesheet" href="">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body>
-
-<h1>Resultado da Soma</h1>
-<p>
+<body class="p-5">
+<div class="container">
+    <h1 class="mb-4">Resultado da Soma</h1>
     <?php 
-    //incluindo a conexão no meu arquivo
-    include "formconexaophp";
 
-    //logica de calculo dos números
-    $num1 = $_POST['numero1'];
-    $num2 = $_POST['numero2'];
-    $soma = $num1 + $num2;
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        echo "<div class='alert alert-warning'>Nenhum dado foi enviado.</div>";
+    } else {
+        $num1 = filter_input(INPUT_POST, 'numero1', FILTER_VALIDATE_FLOAT);
+        $num2 = filter_input(INPUT_POST, 'numero2', FILTER_VALIDATE_FLOAT);
 
-    //sql
-    $sql = "INSERT INTO soma (numero1, numero2, resultado)
-    VALUES ($num1, $num2, $soma)";
+        if ($num1 === false || $num2 === false || $num1 === null || $num2 === null) {
+            echo "<div class='alert alert-danger'>Por favor, informe dois números válidos.</div>";
+        } else {
+            $soma = $num1 + $num2;
 
-    //consulta ou guardar no banco de dados
-    $conexao->query($sql);
-
-    //imprimindo os números na pagina
-    echo "A soma do $num1 + $num2 = $soma"; 
-    
-
+            echo "<div class='alert alert-primary mt-3'>A soma de $num1 + $num2 = $soma</div>";
+        }
+    }
     ?>
-</p>
-    
+    <a href="atividade15.php" class="btn btn-secondary mt-3">Voltar</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
