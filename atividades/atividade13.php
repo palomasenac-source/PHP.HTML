@@ -18,7 +18,7 @@
     $sql = "INSERT INTO multiplicacao (numero1, numero2, resultado) VALUES ($num1, $num2, $resultado)";
 
     if ($sql) {
-    echo "<div class='alert alert-sucess'>Os dados da multiplicação dos três números ($num1, $num2, $num3) foram salvos com sucesso! Resultado: <strong> $resultado</strong>"; 
+    echo "<div class='alert alert-success'>Os dados da multiplicação dos três números ($num1, $num2, $num3) foram salvos com sucesso! Resultado: <strong> $resultado</strong>"; 
     }else{
         echo "<div class='alert alert-danger'>Erro ao salvar os dados da multiplicação: " .$conexao->error ."</div>";
     }
