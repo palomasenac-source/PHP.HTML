@@ -1,20 +1,18 @@
 <?php 
-include "conexao.php";
 
 
 $numero1 = 15;
 $numero2 = 20;
-$numero3 = 35;
 
-$resultado = $numero1 + $numero2 + $numero3;
+$resultado = $numero1 + $numero2;
 
 
-$sql = "INSERT INTO soma (numero1, numero2, numero3, resultado)
-VALUES ($numero1, $numero2, $numero3, $resultado)";
+$sql = "INSERT INTO soma (numero1, numero2,resultado)
+VALUES ($numero1, $numero2, $resultado)";
 
-if ($conexao ->query($sql)) {
+if ($sql) {
 
-    echo "<br> Primeira soma salva com sucesso!"; 
+    echo "<br> Os seus dados foram gravados com sucesso!"; 
 
 }else{
     echo "<br> Erro ao salvar os dados da soma!".$conexao->error;
