@@ -8,7 +8,6 @@
 </head>
 <body class="p-4">
     <?php 
-    include("conexao.php");
 
     $num1 = 25; 
     $num2 = 30;
@@ -19,17 +18,13 @@
     $sql = "INSERT INTO subtracao (numero1, numero2, numero3, resultado)
     VALUES ($num1, $num2, $num3, $resultado)";
 
-    if ($conexao->query($sql)) {
-        echo "<div class='alert alert-success'Os seus Dados foram gravados com sucesso!"; 
+    if ($sql) {
+        echo "<div class='alert alert-success'>Os dados da subtração dos três números ($num1,$num2, $num3) foram salvos com sucesso! Resultado: <strong>$resultado</strong></div>"; 
 
     }else{
-    echo "Erro ao salvar";
-    };
+    echo "<div class='alert alert-danger'>Erro ao salvar os dados da subtração: " . $conexao->error . "</div>";
+    }
     ?>
 
 </body>
 </html>
-
-
-
-
